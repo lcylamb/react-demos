@@ -14,24 +14,27 @@
       const flag = false;
       const arr = [
         {
+          id: 1,
           name: "Carrie",
           age: 12,
           sex: 1,
         },
         {
+          id: 2,
           name: "Emma",
           age: 13,
           sex: 2,
         },
         {
+          id: 3,
           name: "Bella",
           age: 23,
           sex: 2,
         },
       ];
-      const lis = arr.map((item, index) => {
+      const lis = arr.map((item) => {
         return (
-          <li key={index}>
+          <li key={item.id}>
             <p>{item.name}</p>
             <p>{item.age}</p>
             <p>{item.sex}</p>
