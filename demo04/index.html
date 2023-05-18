@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>demo03</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+    <script type="text/babel">
+      class Test extends React.Component {
+        render() {
+          return <div> 类组件接收props：{this.props.name}</div>;
+        }
+      }
+      function Foo(props) {
+        return <div>函数组件接收props：{props.name}</div>;
+      }
+      const element = (
+        <div>
+          <Test name="zs"></Test>
+          <Foo name="ls"></Foo>
+        </div>
+      );
+      ReactDOM.createRoot(document.getElementById("root")).render(element);
+    </script>
+  </body>
+</html>
