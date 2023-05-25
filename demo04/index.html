@@ -12,7 +12,12 @@
     <script type="text/babel">
       class Test extends React.Component {
         render() {
-          return <div> 类组件接收props：{this.props.name}</div>;
+          return (
+            <div>
+              类组件接收props：{this.props.name}
+              <p>props.children获取{this.props.children.name}</p>
+            </div>
+          );
         }
       }
       function Foo(props) {
@@ -20,7 +25,7 @@
       }
       const element = (
         <div>
-          <Test name="zs"></Test>
+          <Test name="zs">{{ name: "ls" }}</Test>
           <Foo name="ls"></Foo>
         </div>
       );
