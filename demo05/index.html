@@ -2,24 +2,25 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>demo04</title>
+    <title>demo05</title>
   </head>
   <body>
     <div id="root"></div>
     <script src="../js/react.development.js"></script>
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.js"></script>
+    <script src="../js//prop-types.js"></script>
     <script type="text/babel">
+      const data = { a: 1, b: 2, c: 3 };
       class Test extends React.Component {
-        constructor(props) {
-          super(props);
-          console.log(this.props);
-        }
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+        };
         render() {
           return (
             <div>
               类组件接收props：{this.props.name}
-              <p>props.children获取{this.props.children.name}</p>
+              <p></p>
             </div>
           );
         }
@@ -27,10 +28,28 @@
       function Foo(props) {
         return <div>函数组件接收props：{props.name}</div>;
       }
+      Foo.propTypes = {
+        name: PropTypes.string.isRequired,
+      };
+      Foo.defaultProps = {
+        name: "默认值：ww",
+      };
+
+      function Fun(props) {
+        return (
+          <div>
+            <p>批量传递：{props.a}</p>
+            <p>批量传递：{props.b}</p>
+            <p>批量传递：{props.c}</p>
+          </div>
+        );
+      }
       const element = (
         <div>
           <Test name="zs"></Test>
           <Foo name="ls"></Foo>
+          <Foo></Foo>
+          <Fun {...data}></Fun>
         </div>
       );
       ReactDOM.createRoot(document.getElementById("root")).render(element);

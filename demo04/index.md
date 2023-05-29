@@ -4,12 +4,19 @@
 
 - 写在组件标签属性位置
   `<Test name="zs"></Test>`
-- 写在组件标签内容位置(只能通过 props.children 获取)
+- 写在组件标签子节点位置(只能通过 props.children 获取)
 
 ## props 接收数据
 
 - 类组件
   - 通过组件实例`this.props`获取
+  - 在类组件 constructor 中，不能直接通过`this.props`获取数据，需要将传递给 constructor 形参，并调用 super 时传递
+  ```js
+  constructor(props){
+    super(props)
+    console.log(this.props)
+  }
+  ```
 - 函数组件
   - 通过函数形参接收
 
