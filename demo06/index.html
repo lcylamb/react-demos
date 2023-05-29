@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>demo05</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+    <script type="text/babel">
+      const inpRef1 = React.createRef();
+      const inpRef2 = React.createRef();
+      class Test extends React.Component {
+        handle1 = () => {
+          inpRef1.current.focus();
+        };
+        handle2 = () => {
+          this.inpRef2.focus();
+        };
+        render() {
+          return (
+            <div>
+              <input type="text" ref={inpRef1} />
+              <button onClick={this.handle1}>第一个文本框获取焦点</button>
+              <br />
+              <input
+                type="text"
+                ref={(node) => {
+                  this.inpRef2 = node;
+                }}
+              />
+              <button onClick={this.handle2}>第二个文本框获取焦点</button>
+            </div>
+          );
+        }
+      }
+
+      const element = (
+        <div>
+          <Test></Test>
+        </div>
+      );
+      ReactDOM.createRoot(document.getElementById("root")).render(element);
+    </script>
+  </body>
+</html>
